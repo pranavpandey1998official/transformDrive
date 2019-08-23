@@ -1,0 +1,25 @@
+{
+  "name": "transformDrive",
+  "displayName": "Transform",
+  "expo": {
+    "name": "transformDrive",
+    "slug": "expo-template-bare",
+    "privacy": "unlisted",
+    "sdkVersion": "34.0.0",
+    "version": "1.0.0",
+    "entryPoint": "node_modules/expo/AppEntry.js",
+    "platforms": [
+      "ios",
+      "android",
+      "web"
+    ],
+    "android": {
+      "package": "com.transform",
+      "config": {
+        "googleMaps": {
+          "apiKey": "AIzaSyD2XqNbavNzcx1ydE6eKWxNaoch_erFAB4"
+        }
+      }
+    }
+  }
+}
