@@ -23,6 +23,8 @@ import AppLoadingView from './views/AppLoadingView';
 import SignUpView from './views/SignUpView';
 import SelectRouteView from './views/SelectRouteView';
 
+import * as Font from 'expo-font';
+
 const ScanStack = createStackNavigator({
 	ScanView: {
 		screen: ScanView,
@@ -34,7 +36,10 @@ const ScanStack = createStackNavigator({
 		screen: TicketView,
 		navigationOptions: () => ({
 			title: 'Ticket'
-		})
+		}),
+		headerTitleStyle: {
+			fontFamily: 'open-sans'
+		}
 	}
 }, {
 
@@ -93,10 +98,9 @@ const RouteStack = createStackNavigator({
 
 
 const AppStack = createBottomTabNavigator({
-	Statics: StaticsView,
-	Scan: ScanStack,
 	Route: RouteStack,
-	Settings: SettingsView
+	Scan: ScanStack,
+	Statics: StaticsView,
 }, {
 		defaultNavigationOptions: ({ navigation }) => ({
 			tabBarIcon: ({ focused, horizontal, tintColor }) => {
@@ -132,7 +136,10 @@ const AuthStack = createStackNavigator({
 	SignUpView: {
 		screen: SignUpView,
 		navigationOptions: () => ({
-			title: 'Sign Up'
+			title: 'Sign Up',
+			headerTitleStyle: {
+				fontFamily: 'open-sans'
+			}
 		})
 	}
 }
@@ -145,7 +152,7 @@ const App = createAppContainer(createSwitchNavigator(
 		Auth: AuthStack,
 	},
 	{
-		initialRouteName: 'App',
+		initialRouteName: 'AppLoading',
 	}
 ));
 
@@ -155,7 +162,11 @@ export default class Root extends React.Component {
 		this.init();
 	}
 
-	init = () => {
+	init = async() => {
+		await Font.loadAsync({
+			Montserrat: require('./statics/Montserrat-Regular.ttf'),
+			'open-sans': require('./statics/OpenSans.ttf')
+		});
 		store.dispatch(init());
 	}
 

@@ -18,7 +18,7 @@ export function updateUserRoute (routeId) {
     }
 }
 
-function updateUser(user) {
+export function updateUser(user) {
     return {
         type: AUTH.UPDATE_USER,
         user

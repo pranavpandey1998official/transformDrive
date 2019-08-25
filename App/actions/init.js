@@ -3,7 +3,7 @@ import { AsyncStorage } from 'react-native';
 import { AUTH } from './actionTypes';
 import Navigation from '../lib/Navigation';
 import {URL} from '../constants/server';
-import { login } from '../actions/auth';
+import { setUser } from '../actions/auth';
 import { setRoute } from '../actions/route';
 
 export default appInit = () => {
@@ -21,9 +21,9 @@ export default appInit = () => {
             });
             if(response.status === 200){
                 const user = await response.json();
-                dispatch(login(user));
+                await dispatch(setUser(user));
                 if(user.routeId) {
-                    dispatch(setRoute(user.routeId, user._id));
+                    await dispatch(setRoute(user.routeId, user._id));
                 }
                 return Navigation.navigate('App');
             }

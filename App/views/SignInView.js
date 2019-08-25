@@ -21,13 +21,14 @@ const styles = StyleSheet.create({
 		paddingVertical: 5,
 	},
 	heading: {
-		fontFamily: 'Roboto'
+		//fontFamily: 'Roboto'
 	},
 	label: {
-		fontFamily: 'Roboto',
+		//fontFamily: 'Roboto',
 		color: 'black',
 		fontSize: 20,
 		fontWeight: '300'
+
 	},
 	button: {
 		paddingTop: 0,
@@ -42,9 +43,9 @@ const styles = StyleSheet.create({
 	},
 	heading: {
 		fontSize: 50,
-		fontFamily: 'Roboto',
+		//ontFamily: 'Roboto',
 		fontWeight: '500',
-		marginHorizontal: 8,
+		marginHorizontal: 45,
 		marginVertical: 10
 	},
 	error: {
@@ -102,7 +103,7 @@ class SignInView extends React.Component {
 			<KeyboardAwareScrollView contentContainerStyle={{flex: 1}} behavior='position' scrollEnabled={true} keyboardShouldPersistTaps= 'always'
 			keyboardDismissMode= 'interactive'>
 			<View style={styles.container}>
-				<Text style={styles.heading}>TRANSFORM</Text>
+				<Text style={styles.heading}>TOGETHER</Text>
 				<Button
 					title="Sign Up"
 					raised={true}
@@ -116,8 +117,8 @@ class SignInView extends React.Component {
 					<Divider style={styles.divider} />
 				</View>
 				<Input
-					placeholder='Phone Number'
-					label='Phone Number'
+					placeholder='Email'
+					label='Email'
 					labelStyle={styles.label}
 					inputContainerStyle={styles.input}
 					leftIconContainerStyle={styles.icon}
@@ -130,6 +131,7 @@ class SignInView extends React.Component {
 					labelStyle={styles.label}
 					inputContainerStyle={styles.input}
 					onChangeText={this.handlePassChange}
+					secureTextEntry={true}
 				/>
 				<Button
 					title="Login"

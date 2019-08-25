@@ -23,6 +23,7 @@ export default function login(state = initialState, action) {
                 error: action.error
             }
         case AUTH.UPDATE_USER:
+        console.log(action.user);
             return{
                 ...state,
                 user: {

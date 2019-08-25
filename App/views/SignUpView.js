@@ -9,7 +9,7 @@ import { signUpRequest } from '../actions/auth';
 const styles = StyleSheet.create({
 
     label: {
-        fontFamily: 'Roboto',
+        //fontFamily: 'Roboto',
         color: 'black',
         fontSize: 20,
         fontWeight: '300'
@@ -99,6 +99,7 @@ export default class SignUpView extends React.Component {
                         containerStyle={{ marginVertical: 10 }}
                         onChangeText={(text) => this.setState({ password: text })}
                         value={password}
+                        secureTextEntry={true}
                     />
                     <Button 
                         containerStyle={styles.submitButton}

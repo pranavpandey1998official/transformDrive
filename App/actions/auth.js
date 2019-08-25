@@ -3,7 +3,7 @@ import { AsyncStorage } from 'react-native';
 import { AUTH } from './actionTypes';
 import Navigation from '../lib/Navigation';
 import {URL} from '../constants/server';
-
+import { setRoute } from './route'
 
 export function loginRequest(params) {
     return async function(dispatch) {
@@ -24,7 +24,10 @@ export function loginRequest(params) {
                 const user = await response.json();
                 // console.log(user);
                 await AsyncStorage.setItem('token', user.token);
-                await dispatch(login(user));
+                await dispatch(setUser(user));
+                if(user.routeId) {
+                    dispatch(setRoute(user.routeId, user._id));
+                }
                 await Navigation.navigate('App');
                 return;
             }
@@ -36,7 +39,7 @@ export function loginRequest(params) {
     }
 }
 
-export function login(user) {
+export function setUser(user) {
     return {
         type: AUTH.LOGIN_SUCCESS,
         user

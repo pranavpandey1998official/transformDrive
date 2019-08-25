@@ -6,41 +6,45 @@ const getUserToken = () => {
     return state.auth.user.token;
 }
 
-export const POST = async(path, body) => {
+export const POST = async (path, body) => {
     const token = getUserToken();
-    if(!token) {
+    if (!token) {
         throw new Error('User Must be logged in');
     }
-    const response = await fetch(URL+path,{
-        method: 'POST',
-        headers: {
-            Accept: 'application/json',
-            'Content-Type': 'application/json',
-            Authorization: 'JWT '+token
-        },
-        body: JSON.stringify(body)
-    });
-    if(response.ok) {
-        const data = await response.json();
-        return data;
+    try {
+        const response = await fetch(URL + path, {
+            method: 'POST',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+                Authorization: 'JWT ' + token
+            },
+            body: JSON.stringify(body)
+        });
+        if (response.ok) {
+            const data = await response.json();
+            return data;
+        }
+    } catch (e) {
+        console.log('POST', e)
     }
     return response
 }
 
-export const GET = async(path, body) => {
+export const GET = async (path, body) => {
     const token = getUserToken();
-    if(!token) {
+    if (!token) {
         throw new Error('User Must be logged in');
     }
-    const response = await fetch(URL+path,{
+    const response = await fetch(URL + path, {
         method: 'GET',
         headers: {
             Accept: 'application/json',
             'Content-Type': 'application/json',
-            Authorization: 'JWT '+token
+            Authorization: 'JWT ' + token
         },
     });
-    if(response.ok){
+    if (response.ok) {
         const data = await response.json();
         return data;
     }

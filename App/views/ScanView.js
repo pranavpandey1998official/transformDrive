@@ -3,8 +3,16 @@ import { View, StyleSheet, ActivityIndicator } from 'react-native';
 import Constants from 'expo-constants';
 import * as Permissions from 'expo-permissions';
 import { BarCodeScanner } from 'expo-barcode-scanner';
-import { MaterialIcons } from '@expo/vector-icons';
+import { MaterialIcons, AntDesign } from '@expo/vector-icons';
 import { Text, Button } from 'react-native-elements';
+
+import CircularButton from '../components/CircularButton';
+import { POST } from '../lib/Api';
+import { connect } from 'react-redux';
+import { updateUser } from '../actions/user';
+import { COLOR_GREEN } from '../constants/colors';
+import { WIDTH, HEIGHT } from '../constants/Dimensions';
+
 
 const styles = StyleSheet.create({
 	spinner: {
@@ -20,15 +28,25 @@ const styles = StyleSheet.create({
 	errorText: {
 		margin: 10,
 		fontSize: 14
-	}
+	},
+	check: {
+		position: 'absolute',
+		top: HEIGHT / 2,
+		right: WIDTH / 2,
+		backgroundColor: COLOR_GREEN,
+		padding: 12,
+		alignItems: 'center',
+		justifyContent: 'center',
+	},
 })
 
-export default class ScanView extends React.Component {
+class ScanView extends React.Component {
 
 	constructor(props) {
 		super(props);
 		this.state = {
 			hasCameraPermission: null,
+			scanned: false
 		};
 	}
 
@@ -41,9 +59,32 @@ export default class ScanView extends React.Component {
 		this.setState({ hasCameraPermission: status === 'granted' });
 	};
 
-	handleBarCodeScanned = ({ type, data }) => {
-		this.props.navigation.navigate('Ticket', { data });
-	};
+	handleBarCodeScanned = async ({ data }) => {
+		const { userId, updateUser, navigation } = this.props;
+		try {
+			const ticket = JSON.parse(data);
+			const user = await POST('tickets/book', {
+				ticketId: ticket._id,
+				billAmount: ticket.billAmount,
+				userId,
+			})
+			this.setState((preState) => {
+				if (preState.scanned) return {};
+				updateUser(user);
+				navigation.navigate('Ticket', { ticket });
+				return {
+					scanned: true
+				}
+			})
+
+		} catch (e) {
+			console.log('barcode_scan', e);
+		}
+	}
+
+	handleRescanPress = () => {
+		this.setState({ scanned: false })
+	}
 
 	render() {
 		const { hasCameraPermission, scanned } = this.state;
@@ -72,10 +113,32 @@ export default class ScanView extends React.Component {
 					justifyContent: 'flex-end',
 				}}>
 				<BarCodeScanner
-					onBarCodeScanned={this.handleBarCodeScanned}
+					onBarCodeScanned={scanned ? undefined : this.handleBarCodeScanned}
 					style={StyleSheet.absoluteFillObject}
 				/>
+				{scanned ?
+					<CircularButton
+						onPress={this.handleRescanPress}
+						style={styles.check}
+					>
+						<AntDesign size={25} name='reload1' color='white' />
+					</CircularButton> :
+					null
+				}
 			</View>
 		);
 	}
 }
+
+mapStateToProps = (state) => {
+	return {
+		userId: state.auth.user._id
+	}
+}
+
+mapDispatchToProps = (dispatch) => {
+	return {
+		updateUser: (user) => dispatch(updateUser(user))
+	}
+}
+export default connect(mapStateToProps, mapDispatchToProps)(ScanView);
