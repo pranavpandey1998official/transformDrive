@@ -27,10 +27,12 @@ This repo contains the driver mobile application build using React.Native for ri
 </table>  
 
 ## Gif showing working of app
+<table>  
 <tr>
-    <td><img src="readme/part1.gif" width="250"/></td>
-    <td><img src="readme/part2.gif" width="250"/></td>
+    <td><img src="readme/part1.gif" width="350"/></td>
+    <td><img src="readme/part2.gif" width="350"/></td>
 </tr>
+<table> 
 
 ### ticket booking
 <img src="readme/ticketBooking.gif" width="350"/></td>
