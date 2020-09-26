@@ -3,31 +3,33 @@ In India , most of the public transport that people use is privately owned, ther
 we come up with is to somewhat organize this highly decentralized system, we want to build on top of what is already there, First of our steps is to make people aware about these public transport systems , second we want to make a  single place to buy ticket from that will be accepted by anyone and acknowledged by everyone, We want to make the use of public transport as simple as booking an uber
 
 ## Description
-This repo contains the rider mobile allication build using React.Native for driver's application visit [Driver's app](https://github.com/pranavpandey1998official/transformDrive)
+This repo contains the driver mobile application build using React.Native for rider's application visit [Rider's app](https://github.com/pranavpandey1998official/transformDrive)
 
 ## Images
 <table> 
   <tr>
+    <td><img src="readme/images/login.png" width="250"/></td>
     <td><img src="readme/images/homePage.png" width="250"/></td>
-    <td><img src="readme/images/loginPage.png" width="250"/></td>
-    <td><img src="readme/images/ticketShow.png" width="250"/></td>
-    <td><img src="readme/images/paymentPage.png" width="250"/></td>
+    <td><img src="readme/images/homePageWithRoute.png" width="250"/></td>
+    <td><img src="readme/images/scanner.png" width="250"/></td>
   </tr>
   <tr>
-    <td><img src="readme/images/ticketTab.png" width="250"/></td>
-    <td><img src="readme/images/Booking history.png" width="250"/></td>
-    <td><img src="readme/images/StreakPage.png" width="250"/></td>
-    <td><img src="readme/images/TicketSucessPage.png" width="250"/></td>
+    <td><img src="readme/images/routeMaking1.png" width="250"/></td>
+    <td><img src="readme/images/routeMaking2.png" width="250"/></td>
+    <td><img src="readme/images/routeMaking3.png" width="250"/></td>
+    <td><img src="readme/images/routeMaking4.png" width="250"/></td>
   </tr>
   <tr>
-    <td><img src="readme/images/LeaderBord.png" width="250"/></td>
+    <td><img src="readme/images/paymentRecived.png" width="250"/></td>
+	<td><img src="readme/images/bankBalance.png" width="250"/></td>
+	<td><img src="readme/images/scanningTicket.png" width="250"/></td>
   </tr>
 </table>  
 
 ## Gif showing working of app
 <tr>
-    <td><img src="readme/part1.gif" width="350"/></td>
-    <td><img src="readme/part2.gif" width="350"/></td>
+    <td><img src="readme/part1.gif" width="250"/></td>
+    <td><img src="readme/part2.gif" width="250"/></td>
 </tr>
 
 ### ticket booking
