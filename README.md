@@ -3,7 +3,7 @@ In India , most of the public transport that people use is privately owned, ther
 we come up with is to somewhat organize this highly decentralized system, we want to build on top of what is already there, First of our steps is to make people aware about these public transport systems , second we want to make a  single place to buy ticket from that will be accepted by anyone and acknowledged by everyone, We want to make the use of public transport as simple as booking an uber
 
 ## Description
-This repo contains the driver mobile application build using React.Native for rider's application visit [Rider's app](https://github.com/pranavpandey1998official/transformDrive)
+This repo contains the driver mobile application build using React.Native for rider's application visit [Rider's app](https://github.com/pranavpandey1998official/transform)
 
 ## Images
 <table> 
